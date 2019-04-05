@@ -20,9 +20,6 @@
 #error "Unknow platform"
 #endif
 
-#include <cstring>
-#include "crossguid/guid.hpp"
-
 #ifdef GUID_LIBUUID
 bool generate_guid(char *guid_string, size_t len) {
     uuid_t uuid;
