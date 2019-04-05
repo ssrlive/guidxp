@@ -69,7 +69,7 @@ bool generate_guid(char *guid_string, size_t len) {
             break;
         }
         strupr(guid_string);
-	guid_string[36] = '\0';
+        guid_string[36] = '\0';
         result = true;
     } while (0);
     if (fp) {
