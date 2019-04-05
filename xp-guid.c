@@ -30,6 +30,7 @@ bool generate_guid(char *guid_string, size_t len) {
     uuid_generate(uuid);
     memset(guid_string, 0, len);
     uuid_unparse_lower(uuid, guid_string);
+    strupr(guid_string);
     return true;
 }
 #endif /* GUID_LIBUUID */
