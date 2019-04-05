@@ -9,8 +9,7 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release")
 endif()
 
-add_library(xp-guid ${CMAKE_CURRENT_SOURCE_DIR}/xp-guid.c)
-add_library(xp-guid ${CMAKE_CURRENT_SOURCE_DIR}/test.c)
+add_executable(xp-guid ${CMAKE_CURRENT_SOURCE_DIR}/xp-guid.c ${CMAKE_CURRENT_SOURCE_DIR}/test.c)
 set_property(TARGET xp-guid PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 if(WIN32)
