@@ -4,13 +4,17 @@
 #include <string.h>
 #include "xp-guid.h"
 
+#define USING_LIB_UUID 0
+
 #if defined(ANDROID) // any Android distribution
 #include <jni.h>
 #include <cassert>
 #define GUID_ANDROID
 #elif defined(__linux__) // any Linux distribution
+#if USING_LIB_UUID
 #include <uuid/uuid.h>
-#define GUID_LIBUUID
+#endif
+#define GUID_LINUX
 #elif defined(APPLE) // macOS or iOS system
 #include <CoreFoundation/CFUUID.h>
 #define GUID_CFUUID
@@ -21,7 +25,7 @@
 #error "Unknow platform"
 #endif
 
-#ifdef GUID_LIBUUID
+#ifdef GUID_LINUX
 
 #include <ctype.h>
 char * strupr(char *str) {
@@ -31,6 +35,8 @@ char * strupr(char *str) {
     }
     return orign;
 }
+
+#if USING_LIB_UUID
 
 bool generate_guid(char *guid_string, size_t len) {
     uuid_t uuid;
@@ -43,7 +49,37 @@ bool generate_guid(char *guid_string, size_t len) {
     strupr(guid_string);
     return true;
 }
-#endif /* GUID_LIBUUID */
+
+#else
+
+bool generate_guid(char *guid_string, size_t len) {
+    bool result = false;
+    FILE *fp;
+    do {
+        if (guid_string==NULL || len<37) {
+            break;
+        }
+        /* Open the command for reading. */
+        fp = popen("cat /proc/sys/kernel/random/uuid", "r");
+        if (fp == NULL) {
+            break;
+        }
+        /* Read the output a line at a time - output it. */
+        if (fgets(guid_string, len, fp) == NULL) {
+            break;
+        }
+        strupr(guid_string);
+        result = true;
+    } while (0);
+    if (fp) {
+        pclose(fp);
+    }
+    return result;
+}
+
+#endif /* USING_LIB_UUID */
+
+#endif /* GUID_LINUX */
 
 #ifdef GUID_CFUUID
 bool generate_guid(char *guid_string, size_t len) {
