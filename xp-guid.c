@@ -54,7 +54,7 @@ bool generate_guid(char *guid_string, size_t len) {
 
 bool generate_guid(char *guid_string, size_t len) {
     bool result = false;
-    FILE *fp;
+    FILE *fp = NULL;
     do {
         if (guid_string==NULL || len<37) {
             break;
@@ -69,6 +69,7 @@ bool generate_guid(char *guid_string, size_t len) {
             break;
         }
         strupr(guid_string);
+	guid_string[36] = '\0';
         result = true;
     } while (0);
     if (fp) {
