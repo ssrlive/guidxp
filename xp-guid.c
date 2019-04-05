@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stddef.h>
+#include <string.h>
 #include "xp-guid.h"
 
 #if defined(ANDROID) // any Android distribution
