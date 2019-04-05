@@ -65,12 +65,14 @@ bool generate_guid(char *guid_string, size_t len) {
 bool generate_guid(char *guid_string, size_t len) {
     GUID guid = {0};
     wchar_t szGuidW[40] = {0};
+    char tmp[40] = { 0 };
     if (guid_string == NULL || len < 37) {
         return false;
     }
     CoCreateGuid(&guid);
-    StringFromGUID2(&guid, szGuidW, 40);
-    WideCharToMultiByte(CP_ACP, 0, szGuidW, -1, guid_string, len, NULL, NULL);
+    StringFromGUID2(&guid, szGuidW, ARRAYSIZE(szGuidW));
+    WideCharToMultiByte(CP_ACP, 0, szGuidW, -1, tmp, ARRAYSIZE(tmp), NULL, NULL);
+    strncpy(guid_string, tmp+1, 36);
     return true;
 }
 #endif /* GUID_WINDOWS */
