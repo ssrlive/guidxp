@@ -22,6 +22,16 @@
 #endif
 
 #ifdef GUID_LIBUUID
+
+#include <ctype.h>
+char * strupr(char *str) {
+    char *orign = str;
+    for (; *str != '\0'; ++str) {
+        *str = toupper(*str);
+    }
+    return orign;
+}
+
 bool generate_guid(char *guid_string, size_t len) {
     uuid_t uuid;
     if (guid_string==NULL || len<37) {
