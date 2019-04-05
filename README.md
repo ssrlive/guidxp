@@ -1,6 +1,6 @@
 # Cross Platform GUID generator
 
-Written in C.
+Written in C. Supporting `Linux`, `iOS`, `macOS`, `Windows`, `Android`.
 
 ```
 #if defined(ANDROID)
