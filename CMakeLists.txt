@@ -9,7 +9,7 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release")
 endif()
 
-add_executable(xp-guid ${CMAKE_CURRENT_SOURCE_DIR}/xp-guid.c ${CMAKE_CURRENT_SOURCE_DIR}/test.c)
+add_library(xp-guid ${CMAKE_CURRENT_SOURCE_DIR}/xp-guid.c)
 set_property(TARGET xp-guid PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 if(WIN32)
@@ -39,3 +39,6 @@ target_compile_options(xp-guid PRIVATE ${WARNINGS})
 # for a version number add
 # VERSION ${CROSSGUID_VERSION_STRING} SOVERSION ${CROSSGUID_VERSION_STRING}
 set_target_properties(xp-guid PROPERTIES DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX})
+
+add_executable(testguid ${CMAKE_CURRENT_SOURCE_DIR}/test.c)
+target_link_libraries(testguid xp-guid)
