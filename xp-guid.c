@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <string.h>
@@ -15,7 +16,7 @@
 #include <uuid/uuid.h>
 #endif
 #define GUID_LINUX
-#elif defined(APPLE) // macOS or iOS system
+#elif defined(__APPLE__) // macOS or iOS system
 #include <CoreFoundation/CFUUID.h>
 #define GUID_CFUUID
 #elif defined(_WIN32) // Windows system
@@ -84,29 +85,47 @@ bool generate_guid(char *guid_string, size_t len) {
 
 #ifdef GUID_CFUUID
 bool generate_guid(char *guid_string, size_t len) {
-    CFUUIDRef uuidRef;
-    CFStringRef uuidStrRef;
-    CFIndex length;
-    CFIndex maxSize;
+    bool result = false;
+    CFUUIDRef uuidRef = nil;
+    CFStringRef uuidStrRef = nil;
+    CFIndex length = 0;
+    CFIndex maxSize = 0;
+    char *tmp = NULL;
 
-    if (guid_string == NULL || len < 37) {
-        return false;
+    do {
+        if (guid_string == NULL || len < 37) {
+            break;
+        }
+        
+        uuidRef = CFUUIDCreate(kCFAllocatorDefault);
+        if (uuidRef == nil) {
+            break;
+        }
+        uuidStrRef= CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
+        if (uuidStrRef == nil) {
+            break;
+        }
+        
+        length = CFStringGetLength(uuidStrRef);
+        maxSize = CFStringGetMaximumSizeForEncoding(length, kCFStringEncodingUTF8) + 1;
+        tmp = (char *) calloc(maxSize, sizeof(*tmp));
+        if (tmp == NULL) {
+            break;
+        }
+        CFStringGetCString(uuidStrRef, tmp, maxSize, kCFStringEncodingUTF8);
+        strncpy(guid_string, tmp, len);
+        result = true;
+    } while (0);
+    if (uuidRef) {
+        CFRelease(uuidRef);
     }
-
-    uuidRef = CFUUIDCreate(kCFAllocatorDefault);
-    uuidStrRef= CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
-    CFRelease(uuidRef);
-
-    length = CFStringGetLength(uuidStrRef);
-    maxSize = CFStringGetMaximumSizeForEncoding(length, kCFStringEncodingUTF8) + 1;
-    if (len < (size_t)maxSize) {
-        return false;
+    if (uuidStrRef) {
+        CFRelease(uuidStrRef);
     }
-    CFStringGetCString(uuidStrRef, guid_string, maxSize, kCFStringEncodingUTF8);
-
-    CFRelease(uuidStrRef);
-
-    return true;
+    if (tmp) {
+        free(tmp);
+    }
+    return result;
 }
 #endif /* GUID_CFUUID */
 
