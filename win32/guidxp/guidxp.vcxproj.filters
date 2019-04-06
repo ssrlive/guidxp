@@ -15,16 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\test.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\guidxp.c">
+    <ClCompile Include="..\..\guidxp.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\guidxp.h">
+    <ClInclude Include="..\..\guidxp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="guidxp.def">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
