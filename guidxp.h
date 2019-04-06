@@ -1,5 +1,5 @@
-#ifndef __XP_GUID_H__
-#define __XP_GUID_H__ 1
+#ifndef __GUID_XP_H__
+#define __GUID_XP_H__ 1
 
 #include <stdio.h>
 #include <stdbool.h>
@@ -20,4 +20,4 @@ bool generate_guid(char *guid_string, size_t len);
 }
 #endif
 
-#endif /* __XP_GUID_H__ */
+#endif /* __GUID_XP_H__ */

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "xp-guid.h"
+#include "guidxp.h"
 
 
 int main(int argc, char *argv[]) {

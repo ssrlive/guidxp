@@ -14,8 +14,8 @@
 		3A5CBB04225865E1004EA16B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A5CBB02225865E1004EA16B /* LaunchScreen.storyboard */; };
 		3A5CBB07225865E1004EA16B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5CBB06225865E1004EA16B /* main.m */; };
 		3A5CBB1B225866E6004EA16B /* test.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A5CBB18225866E6004EA16B /* test.c */; };
-		3A5CBB1C225866E6004EA16B /* xp-guid.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A5CBB1A225866E6004EA16B /* xp-guid.c */; };
-		3A5CBB1F22586951004EA16B /* xp-guid.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A5CBB1E22586951004EA16B /* xp-guid.c */; };
+		3A5CBB1C225866E6004EA16B /* guidxp.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A5CBB1A225866E6004EA16B /* guidxp.c */; };
+		3A5CBB1F22586951004EA16B /* guidxp.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A5CBB1E22586951004EA16B /* guidxp.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,10 +43,10 @@
 		3A5CBB06225865E1004EA16B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3A5CBB1122586666004EA16B /* macostest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = macostest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A5CBB18225866E6004EA16B /* test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = test.c; path = ../../test.c; sourceTree = "<group>"; };
-		3A5CBB19225866E6004EA16B /* xp-guid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "xp-guid.h"; path = "../../xp-guid.h"; sourceTree = "<group>"; };
-		3A5CBB1A225866E6004EA16B /* xp-guid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "xp-guid.c"; path = "../../xp-guid.c"; sourceTree = "<group>"; };
-		3A5CBB1D22586951004EA16B /* xp-guid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "xp-guid.h"; path = "../../xp-guid.h"; sourceTree = "<group>"; };
-		3A5CBB1E22586951004EA16B /* xp-guid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "xp-guid.c"; path = "../../xp-guid.c"; sourceTree = "<group>"; };
+		3A5CBB19225866E6004EA16B /* guidxp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "guidxp.h"; path = "../../guidxp.h"; sourceTree = "<group>"; };
+		3A5CBB1A225866E6004EA16B /* guidxp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "guidxp.c"; path = "../../guidxp.c"; sourceTree = "<group>"; };
+		3A5CBB1D22586951004EA16B /* guidxp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "guidxp.h"; path = "../../guidxp.h"; sourceTree = "<group>"; };
+		3A5CBB1E22586951004EA16B /* guidxp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "guidxp.c"; path = "../../guidxp.c"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +88,8 @@
 		3A5CBAF6225865DF004EA16B /* testapp */ = {
 			isa = PBXGroup;
 			children = (
-				3A5CBB1E22586951004EA16B /* xp-guid.c */,
-				3A5CBB1D22586951004EA16B /* xp-guid.h */,
+				3A5CBB1E22586951004EA16B /* guidxp.c */,
+				3A5CBB1D22586951004EA16B /* guidxp.h */,
 				3A5CBAF7225865DF004EA16B /* AppDelegate.h */,
 				3A5CBAF8225865DF004EA16B /* AppDelegate.m */,
 				3A5CBAFA225865DF004EA16B /* ViewController.h */,
@@ -107,8 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				3A5CBB18225866E6004EA16B /* test.c */,
-				3A5CBB1A225866E6004EA16B /* xp-guid.c */,
-				3A5CBB19225866E6004EA16B /* xp-guid.h */,
+				3A5CBB1A225866E6004EA16B /* guidxp.c */,
+				3A5CBB19225866E6004EA16B /* guidxp.h */,
 			);
 			path = macostest;
 			sourceTree = "<group>";
@@ -204,7 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A5CBB1F22586951004EA16B /* xp-guid.c in Sources */,
+				3A5CBB1F22586951004EA16B /* guidxp.c in Sources */,
 				3A5CBAFC225865DF004EA16B /* ViewController.m in Sources */,
 				3A5CBB07225865E1004EA16B /* main.m in Sources */,
 				3A5CBAF9225865DF004EA16B /* AppDelegate.m in Sources */,
@@ -215,7 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A5CBB1C225866E6004EA16B /* xp-guid.c in Sources */,
+				3A5CBB1C225866E6004EA16B /* guidxp.c in Sources */,
 				3A5CBB1B225866E6004EA16B /* test.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

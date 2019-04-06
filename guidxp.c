@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <string.h>
-#include "xp-guid.h"
+#include "guidxp.h"
 
 #define USING_LIB_UUID 0
 

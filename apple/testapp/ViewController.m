@@ -3,7 +3,7 @@
 //
 
 #import "ViewController.h"
-#import "xp-guid.h"
+#import "guidxp.h"
 
 @interface ViewController ()
 
