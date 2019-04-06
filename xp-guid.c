@@ -7,6 +7,10 @@
 
 #define USING_LIB_UUID 0
 
+/*
+ * https://stackoverflow.com/questions/5919996/how-to-detect-reliably-mac-os-x-ios-linux-windows-in-c-preprocessor
+ */
+
 #if defined(ANDROID) // any Android distribution
 #include <jni.h>
 #include <cassert>
