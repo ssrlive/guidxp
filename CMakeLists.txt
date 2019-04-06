@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.5.1)
 project(guidxp)
 
+set(LIBGUIDXPDIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE INTERNAL "libguidxp library" FORCE)
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
 set(CMAKE_DEBUG_POSTFIX "-dgb")
@@ -9,7 +11,7 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release")
 endif()
 
-add_library(guidxp STATIC ${CMAKE_CURRENT_SOURCE_DIR}/guidxp.c)
+add_library(guidxp STATIC ${LIBGUIDXPDIR}/guidxp.c)
 set_property(TARGET guidxp PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 if(WIN32)
@@ -42,5 +44,5 @@ target_compile_options(guidxp PRIVATE ${WARNINGS})
 # VERSION ${CROSSGUID_VERSION_STRING} SOVERSION ${CROSSGUID_VERSION_STRING}
 set_target_properties(guidxp PROPERTIES DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX})
 
-add_executable(testguid ${CMAKE_CURRENT_SOURCE_DIR}/test.c)
+add_executable(testguid ${LIBGUIDXPDIR}/test.c)
 target_link_libraries(testguid guidxp)
